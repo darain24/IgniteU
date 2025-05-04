@@ -3,7 +3,7 @@ import React from "react";
 
 function Header() {
   return (
-    <header className="flex justify-between items-center p-4 shadow-md bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-6">
+    <header className="flex justify-between items-center p-4 w-full bg-blue-600 shadow-md max-sm:flex-col max-sm:gap-2.5 shadow-md bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-6">
       <a href="/"><h1 className="text-3xl font-bold text-white">IgniteU</h1></a>
       <nav className="flex gap-5 max-md:hidden">
         <a href="/" className="hover:underline text-base leading-6 text-white">
