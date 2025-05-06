@@ -7,7 +7,7 @@ function AboutSection() {
         About Us
       </h2>
       <p className="mb-7 text-lg leading-7 text-center text-black max-md:text-base max-sm:text-sm">
-        At E-Learning, we are dedicated to providing high-quality online
+        At IgniteU, we are dedicated to providing high-quality online
         education that empowers learners to achieve their goals.
       </p>
       <p className="mb-7 text-lg leading-7 text-center text-black max-md:text-base max-sm:text-sm">

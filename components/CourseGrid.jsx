@@ -6,32 +6,38 @@ function CourseGrid() {
     {
       id: 1,
       title: "Web Development",
-      description: "Learn how to build websites using HTML, CSS, and JavaScript."
+      description: "Learn how to build websites using HTML, CSS, and JavaScript.",
+      imageUrl: "/images/web-development.jpg"
     },
     {
       id: 2,
       title: "Data Science",
-      description: "Dive into data analysis and machine learning techniques."
+      description: "Dive into data analysis and machine learning techniques.",
+      imageUrl: "/images/data-science.jpg"
     },
     {
       id: 3,
       title: "Digital Marketing",
-      description: "Master SEO, social media, and content marketing strategies."
+      description: "Master SEO, social media, and content marketing strategies.",
+      imageUrl: "/images/digital-marketing.jpg"
     },
     {
       id: 4,
       title: "Graphic Design",
-      description: "Explore design principles and tools to create stunning visuals."
+      description: "Explore design principles and tools to create stunning visuals.",
+      imageUrl: "/images/graphic-design.jpg"
     },
     {
       id: 5,
       title: "Project Management",
-      description: "Learn how to manage projects effectively and efficiently."
+      description: "Learn how to manage projects effectively and efficiently.",
+      imageUrl: "/images/project-management.jpg"
     },
     {
       id: 6,
       title: "Cybersecurity",
-      description: "Understand the fundamentals of protecting information systems."
+      description: "Understand the fundamentals of protecting information systems.",
+      imageUrl: "/images/cybersecurity.jpg"
     }
   ];
 
@@ -47,6 +53,7 @@ function CourseGrid() {
             id={course.id}
             title={course.title}
             description={course.description}
+            imageUrl={course.imageUrl}
           />
         ))}
       </div>

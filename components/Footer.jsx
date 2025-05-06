@@ -1,24 +1,19 @@
 import React from "react";
+import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 
 function Footer() {
   return (
     <footer className="w-full py-6 bg-gradient-to-r from-blue-600 to-purple-600 flex flex-col items-center max-sm:py-4">
       <p className="text-white text-base mb-2">© 2025 IgniteU. All rights reserved.</p>
       <div className="flex gap-5">
-        <a href="#" aria-label="LinkedIn">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="social-icon">
-            <path d="M4.13375 14H1.23125V4.65312H4.13375V14ZM2.68094 3.37812C1.75281 3.37812 1 2.60937 1 1.68124C1 1.23543 1.1771 0.807877 1.49234 0.49264C1.80757 0.177403 2.23513 0.000305176 2.68094 0.000305176C3.12675 0.000305176 3.5543 0.177403 3.86954 0.49264C4.18478 0.807877 4.36188 1.23543 4.36188 1.68124C4.36188 2.60937 3.60875 3.37812 2.68094 3.37812ZM14.9969 14H12.1006V9.44999C12.1006 8.36562 12.0787 6.97499 10.5916 6.97499C9.0825 6.97499 8.85125 8.15312 8.85125 9.37187V14H5.95188V4.65312H8.73562V5.92812H8.77625C9.16375 5.19374 10.1103 4.41874 11.5225 4.41874C14.46 4.41874 15 6.35312 15 8.86562V14H14.9969Z" fill="white" />
-          </svg>
+        <a href="https://www.linkedin.com/in/syed-darain-qamar-583634323/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <FaLinkedin className="text-white w-6 h-6" />
         </a>
-        <a href="#" aria-label="Twitter">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="social-icon">
-            <path d="M14.3553 4.74113C14.3655 4.88325 14.3655 5.02541 14.3655 5.16753C14.3655 9.50253 11.066 14.4975 5.03553 14.4975C3.17766 14.4975 1.45178 13.9594 0 13.0254C0.263969 13.0558 0.51775 13.066 0.791875 13.066C2.32484 13.066 3.73603 12.5483 4.86294 11.665C3.42131 11.6345 2.21319 10.6904 1.79694 9.39088C2 9.42131 2.20303 9.44163 2.41625 9.44163C2.71066 9.44163 3.00509 9.401 3.27919 9.32997C1.77666 9.02538 0.649719 7.7056 0.649719 6.11169V6.07109C1.08625 6.31475 1.59391 6.46703 2.13194 6.48731C1.24869 5.89847 0.670031 4.89341 0.670031 3.75634C0.670031 3.14722 0.832438 2.58884 1.11672 2.10153C2.73094 4.09138 5.15734 5.39084 7.87813 5.533C7.82738 5.28934 7.79691 5.03556 7.79691 4.78175C7.79691 2.97463 9.25884 1.50256 11.0761 1.50256C12.0203 1.50256 12.873 1.8985 13.472 2.53809C14.2131 2.39597 14.9238 2.12184 15.5533 1.74622C15.3096 2.50766 14.7918 3.14725 14.1116 3.55331C14.7715 3.48228 15.4111 3.2995 15.9999 3.04572C15.5533 3.69544 14.9949 4.27409 14.3553 4.74113Z" fill="white" />
-          </svg>
+        <a href="https://github.com/darain24" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <FaGithub className="text-white w-6 h-6" />
         </a>
-        <a href="#" aria-label="Facebook">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="social-icon">
-            <path d="M11.7231 9L12.1675 6.10437H9.38908V4.22531C9.38908 3.43313 9.77721 2.66094 11.0216 2.66094H12.2847V0.195625C12.2847 0.195625 11.1385 0 10.0425 0C7.75439 0 6.25877 1.38688 6.25877 3.8975V6.10437H3.71533V9H6.25877V16H9.38908V9H11.7231Z" fill="white" />
-          </svg>
+        <a href="https://www.instagram.com/darainqamar/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <FaInstagram className="text-white w-6 h-6" />
         </a>
       </div>
     </footer>

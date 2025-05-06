@@ -5,19 +5,19 @@ function StudentDashboard() {
   const dashboardCards = [
     {
       id: 1,
-      svgId: "5:493",
+      imageUrl: "../images/performance-analysis.jpg",
       title: "Performance Analysis",
       description: "Track your progress and improve your skills.",
     },
     {
       id: 2,
-      svgId: "5:485",
+      imageUrl: "../images/courses-completed.jpg",
       title: "Courses Completed",
       description: "View the courses you have successfully completed.",
     },
     {
       id: 3,
-      svgId: "5:477",
+      imageUrl: "../images/upcoming-classes.jpg",
       title: "Upcoming Classes",
       description: "Check your schedule for upcoming classes.",
     },
@@ -32,7 +32,7 @@ function StudentDashboard() {
         {dashboardCards.map((card) => (
           <DashboardCard
             key={card.id}
-            svgId={card.svgId}
+            imageUrl={card.imageUrl}
             title={card.title}
             description={card.description}
           />
