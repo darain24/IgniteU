@@ -5,19 +5,19 @@ function StudentDashboard() {
   const dashboardCards = [
     {
       id: 1,
-      imageUrl: "../images/performance-analysis.jpg",
+      imageUrl: "../Images/performance-analysis.jpg",
       title: "Performance Analysis",
       description: "Track your progress and improve your skills.",
     },
     {
       id: 2,
-      imageUrl: "../images/courses-completed.jpg",
+      imageUrl: "../Images/courses-completed.jpg",
       title: "Courses Completed",
       description: "View the courses you have successfully completed.",
     },
     {
       id: 3,
-      imageUrl: "../images/upcoming-classes.jpg",
+      imageUrl: "../Images/upcoming-classes.jpg",
       title: "Upcoming Classes",
       description: "Check your schedule for upcoming classes.",
     },
