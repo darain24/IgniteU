@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-import Header from '@/components/Header';
+import Header from '../../components/Header';
 
 export default function CheckoutPage() {
   const searchParams = useSearchParams();
