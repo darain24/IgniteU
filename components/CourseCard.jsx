@@ -20,7 +20,8 @@ function CourseCard({ id, imageUrl, title, description }) {
       >
         Buy Now
       </Link>
-    </article>
+      git pull --no-rebase
+      </article>
   );
 }
 
