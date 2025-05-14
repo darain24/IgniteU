@@ -7,19 +7,19 @@ function FAQSection() {
       id: 1,
       question: "How do I enroll in a course?",
       answer:
-        "You can enroll in a course by clicking on the course title and following the instructions.",
+        "You can enroll in a course by clicking on the course title and following the instructions provided on the course page. Make sure to complete the registration process to secure your spot.",
     },
     {
       id: 2,
       question: "What payment methods are accepted?",
       answer:
-        "We accept credit cards, PayPal, and other popular payment methods.",
+        "We accept a variety of payment methods including credit cards, PayPal, and other popular payment gateways. For more details, you can visit our payment options page.",
     },
     {
       id: 3,
       question: "Is there a certificate after course completion?",
       answer:
-        "Yes, you will receive a certificate upon successful completion of the course.",
+        "Yes, upon successfully completing the course, you will receive a certificate of completion. This certificate can be downloaded from your profile and shared on professional platforms.",
     },
   ];
 

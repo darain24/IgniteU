@@ -17,7 +17,7 @@ function Hero() {
           Start your journey today and achieve your goals with us.
         </p>
         <button
-          className="mt-6 px-6 py-3 bg-white text-blue-600 rounded-full font-semibold shadow-md hover:bg-blue-100 transition hover:underline cursor-pointer"
+          className="mt-6 px-6 py-3 bg-white text-blue-600 rounded-full font-semibold shadow-md transition hover:underline cursor-pointer"
           onClick={handleExploreCourses}
         >
           Explore Courses

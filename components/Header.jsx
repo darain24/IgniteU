@@ -52,7 +52,10 @@ function Header() {
         >
           Contact
         </a>
-        <button className="px-4 py-1.5 text-base text-blue-600 bg-yellow-300 rounded bg-yellow-400 hover:bg-yellow-300 text-black">
+        <button
+          onClick={() => (window.location.href = "/login")}
+          className="px-4 py-1.5 text-base text-blue-600 bg-yellow-300 rounded bg-yellow-400 hover:bg-yellow-300 text-black"
+        >
           Login
         </button>
       </nav>
