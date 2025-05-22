@@ -8,7 +8,9 @@ function AboutPage() {
   return (
     <main className="flex flex-col items-center mx-auto w-full max-w-none bg-gray-100 max-md:max-w-[991px] max-sm:max-w-screen-sm">
       <Header />
-      <AboutSection />
+      <div className="mb-16">
+        <AboutSection />
+      </div>
       <Footer />
     </main>
   );

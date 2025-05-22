@@ -1,23 +1,34 @@
 import React from "react";
+import Image from "next/image";
 
 function AboutSection() {
   return (
-    <section className="flex flex-col items-center px-0 py-16 w-full h-[840px] max-w-screen-xl">
-      <h2 className="mb-7 text-4xl font-bold text-black max-md:text-3xl max-sm:text-2xl">
+    <section className="flex flex-col items-center px-0 pt-16 pb-24 w-full h-[840px] max-w-screen-xl">
+      <h2 className="mb-8 text-4xl font-bold text-black max-md:text-3xl max-sm:text-2xl">
         About Us
       </h2>
-      <p className="mb-7 text-lg leading-7 text-center text-black max-md:text-base max-sm:text-sm">
-        At IgniteU, we are dedicated to providing high-quality online
-        education that empowers learners to achieve their goals.
+      <p className="mb-8 text-xl leading-8 text-center text-black max-md:text-lg max-sm:text-base max-w-4xl px-4">
+        Welcome to IgniteU, where we transform online education through
+        exceptional learning experiences. Our passion lies in crafting courses
+        that ignite curiosity and empower learners to reach their fullest
+        potential. From web development to data analytics, digital marketing to
+        cybersecurity – each course is a masterpiece crafted by industry
+        visionaries who bring real-world expertise to your learning journey.
+        What makes us special is our commitment to excellence. Through hands-on
+        projects, interactive case studies, and real-world assignments, we
+        ensure you don't just learn – you master your craft. Join our vibrant
+        community of learners, where ideas flourish and success stories are
+        born. With lifetime access to cutting-edge materials and continuous
+        updates, your potential knows no bounds.
       </p>
-      <p className="mb-7 text-lg leading-7 text-center text-black max-md:text-base max-sm:text-sm">
-        Our platform offers a wide range of courses designed by industry
-        experts, ensuring you receive the best knowledge and skills.
-      </p>
-      <p className="mb-7 text-lg leading-7 text-center text-black max-md:text-base max-sm:text-sm">
-        Join us today and start your journey towards success!
-      </p>
-      <div className="rounded-lg bg-zinc-300 h-[400px] w-[600px] max-md:h-[333px] max-md:w-[500px] max-sm:h-[200px] max-sm:w-[300px]" aria-label="About us image" role="img" />
+      <Image
+        src="/Images/about-image.png"
+        alt="Students collaborating in a modern learning environment"
+        width={600}
+        height={400}
+        className="rounded-lg max-md:w-[500px] max-md:h-[333px] max-sm:w-[300px] max-sm:h-[200px]"
+        priority
+      />
     </section>
   );
 }

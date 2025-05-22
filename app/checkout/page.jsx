@@ -18,7 +18,7 @@ function CheckoutContent() {
 
   const courseId = searchParams.get('courseId');
   const courseTitle = searchParams.get('title');
-  const coursePrice = 99.99; // You can modify this or fetch from an API
+  const coursePrice = 49.99;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -30,8 +30,6 @@ function CheckoutContent() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would typically integrate with a payment processor
-    // For now, we'll just show a success message
     alert('Payment processed successfully!');
     router.push('/courses');
   };
@@ -40,15 +38,13 @@ function CheckoutContent() {
     <main className="py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg p-8">
         <h1 className="text-2xl font-bold text-center mb-8">Checkout</h1>
-        
-        {/* Course Summary */}
+
         <div className="mb-8 p-4 bg-gray-50 rounded-lg">
           <h2 className="text-lg font-semibold mb-2">Order Summary</h2>
           <p className="text-gray-600">{courseTitle || 'Selected Course'}</p>
           <p className="text-xl font-bold mt-2">${coursePrice}</p>
         </div>
 
-        {/* Checkout Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-2 gap-4">
             <div>
