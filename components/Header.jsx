@@ -1,8 +1,19 @@
 "use client";
 import React from "react";
+import { useAuth } from "../context/AuthContext";
+import { useRouter } from "next/navigation";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const { user, logout } = useAuth();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    const result = await logout();
+    if (result.success) {
+      router.push('/');
+    }
+  };
 
   return (
     <header className="flex justify-between items-center p-4 w-full bg-blue-600 shadow-md max-sm:flex-col max-sm:gap-2.5 shadow-md bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-6">
@@ -63,12 +74,21 @@ function Header() {
         >
           Contact
         </a>
-        <button
-          onClick={() => (window.location.href = "/login")}
-          className="px-4 py-1.5 text-base text-blue-600 bg-yellow-300 rounded bg-yellow-400 hover:bg-yellow-300 text-black hover:cursor-pointer"
-        >
-          Login
-        </button>
+        {user ? (
+          <button
+            onClick={handleLogout}
+            className="px-4 py-1.5 text-base text-blue-600 bg-yellow-300 rounded bg-yellow-400 hover:bg-yellow-300 text-black hover:cursor-pointer"
+          >
+            Logout
+          </button>
+        ) : (
+          <button
+            onClick={() => (window.location.href = "/login")}
+            className="px-4 py-1.5 text-base text-blue-600 bg-yellow-300 rounded bg-yellow-400 hover:bg-yellow-300 text-black hover:cursor-pointer"
+          >
+            Login
+          </button>
+        )}
       </nav>
     </header>
   );

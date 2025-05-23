@@ -33,7 +33,26 @@ function LoginForm() {
     if (result.success) {
       router.push('/'); // Redirect to home page after successful login
     } else {
-      setError(result.error);
+      // Handle specific Firebase error messages
+      if (result.error.includes('user-not-found') || result.error.includes('wrong-password')) {
+        setError(
+          <div className="space-y-2">
+            <p>Wrong ID or Password</p>
+            <p className="text-sm">
+              Don't have an account?{' '}
+              <Link href="/signup" className="text-blue-600 hover:text-blue-500 font-medium">
+                Sign up now
+              </Link>
+            </p>
+          </div>
+        );
+      } else if (result.error.includes('invalid-email')) {
+        setError('Please enter a valid email address.');
+      } else if (result.error.includes('too-many-requests')) {
+        setError('Too many failed attempts. Please try again later.');
+      } else {
+        setError('Invalid Id or Password');
+      }
     }
     
     setIsSubmitting(false);
@@ -84,7 +103,7 @@ function LoginForm() {
           </div>
           
           {error && (
-            <div className="p-3 bg-red-50 text-red-700 rounded-lg text-sm">
+            <div className="p-4 bg-red-50 text-red-700 rounded-lg text-sm">
               {error}
             </div>
           )}

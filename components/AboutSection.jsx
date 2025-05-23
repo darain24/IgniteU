@@ -3,7 +3,7 @@ import Image from "next/image";
 
 function AboutSection() {
   return (
-    <section className="flex flex-col items-center px-0 pt-16 pb-24 w-full h-[840px] max-w-screen-xl">
+    <section className="flex flex-col items-center px-0 pt-16 pb-32 w-full min-h-[840px] max-w-screen-xl mb-16">
       <h2 className="mb-8 text-4xl font-bold text-black max-md:text-3xl max-sm:text-2xl">
         About Us
       </h2>
