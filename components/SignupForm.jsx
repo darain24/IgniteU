@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useAuth } from "../context/AuthContext";
 
 function SignupForm() {
   const [formData, setFormData] = useState({
@@ -11,6 +13,8 @@ function SignupForm() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
+  const { signup } = useAuth();
+  const router = useRouter();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,7 +22,7 @@ function SignupForm() {
       ...prev,
       [name]: value
     }));
-    setError(null); // Clear error when user types
+    setError(null);
   };
 
   const handleSubmit = async (e) => {
@@ -33,16 +37,22 @@ function SignupForm() {
       return;
     }
 
-    try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      // Here you would typically make an actual API call to your backend
-      console.log('Signup attempt with:', formData);
-    } catch (error) {
-      setError('An error occurred during signup. Please try again.');
-    } finally {
+    // Validate password length
+    if (formData.password.length < 6) {
+      setError('Password must be at least 6 characters long');
       setIsSubmitting(false);
+      return;
     }
+
+    const result = await signup(formData.email, formData.password, formData.name);
+    
+    if (result.success) {
+      router.push('/'); // Redirect to home page after successful signup
+    } else {
+      setError(result.error);
+    }
+    
+    setIsSubmitting(false);
   };
 
   return (
@@ -102,7 +112,7 @@ function SignupForm() {
               placeholder="Create a password"
               className="p-3 w-full text-base rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 text-black placeholder-gray-400"
               required
-              minLength="8"
+              minLength="6"
             />
           </div>
 
@@ -119,7 +129,7 @@ function SignupForm() {
               placeholder="Confirm your password"
               className="p-3 w-full text-base rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 text-black placeholder-gray-400"
               required
-              minLength="8"
+              minLength="6"
             />
           </div>
           
@@ -132,7 +142,7 @@ function SignupForm() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`px-6 py-3 text-base font-medium text-white bg-blue-600 rounded-lg cursor-pointer transition-all duration-200
+            className={`px-6 py-3 text-base font-medium text-white bg-blue-600 rounded-lg transition-all duration-200 cursor-pointer
               ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:bg-blue-700 hover:shadow-lg'}`}
           >
             {isSubmitting ? 'Creating Account...' : 'Create Account'}

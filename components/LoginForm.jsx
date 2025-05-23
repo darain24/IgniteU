@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useAuth } from "../context/AuthContext";
 
 function LoginForm() {
   const [formData, setFormData] = useState({
@@ -9,6 +11,8 @@ function LoginForm() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
+  const { login } = useAuth();
+  const router = useRouter();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,7 +20,7 @@ function LoginForm() {
       ...prev,
       [name]: value
     }));
-    setError(null); // Clear error when user types
+    setError(null);
   };
 
   const handleSubmit = async (e) => {
@@ -24,16 +28,15 @@ function LoginForm() {
     setIsSubmitting(true);
     setError(null);
 
-    try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      // Here you would typically make an actual API call to your backend
-      console.log('Login attempt with:', formData);
-    } catch (error) {
-      setError('Invalid email or password. Please try again.');
-    } finally {
-      setIsSubmitting(false);
+    const result = await login(formData.email, formData.password);
+    
+    if (result.success) {
+      router.push('/'); // Redirect to home page after successful login
+    } else {
+      setError(result.error);
     }
+    
+    setIsSubmitting(false);
   };
 
   return (
