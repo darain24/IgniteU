@@ -1,4 +1,4 @@
-# Ignite-U — E-Learning Platform
+# IgniteU — E-Learning Platform
 
 Ignite-U is a sleek and modern e-learning platform designed to provide an engaging and user-friendly learning experience. Built with Next.js, Tailwind CSS, and Firebase, the platform offers a fast, responsive, and scalable solution for online education.
 
