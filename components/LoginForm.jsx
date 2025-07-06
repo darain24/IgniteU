@@ -2,7 +2,9 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
+import { fadeInUp, scaleIn } from "../animations";
 
 function LoginForm() {
   const [formData, setFormData] = useState({
@@ -60,17 +62,38 @@ function LoginForm() {
 
   return (
     <section className="px-4 py-16 text-center max-w-md mx-auto">
-      <div className="bg-white p-8 rounded-xl shadow-sm">
-        <h2 className="text-3xl font-bold text-black mb-6">Welcome Back</h2>
-        <p className="text-gray-600 mb-8">
+      <motion.div 
+        className="bg-white p-8 rounded-xl shadow-sm"
+        variants={fadeInUp}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.h2 
+          className="text-3xl font-bold text-black mb-6"
+          variants={fadeInUp}
+        >
+          Welcome Back
+        </motion.h2>
+        <motion.p 
+          className="text-gray-600 mb-8"
+          variants={fadeInUp}
+          transition={{ delay: 0.1 }}
+        >
           Sign in to your account to continue
-        </p>
+        </motion.p>
         
-        <form
+        <motion.form
           className="flex flex-col gap-6"
           onSubmit={handleSubmit}
+          variants={fadeInUp}
+          transition={{ delay: 0.2 }}
         >
-          <div className="text-left">
+          <motion.div 
+            className="text-left"
+            variants={fadeInUp}
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.2 }}
+          >
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
               Email Address
             </label>
@@ -84,9 +107,14 @@ function LoginForm() {
               className="p-3 w-full text-base rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 text-black placeholder-gray-400"
               required
             />
-          </div>
+          </motion.div>
 
-          <div className="text-left">
+          <motion.div 
+            className="text-left"
+            variants={fadeInUp}
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.2 }}
+          >
             <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
               Password
             </label>
@@ -100,31 +128,47 @@ function LoginForm() {
               className="p-3 w-full text-base rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 text-black placeholder-gray-400"
               required
             />
-          </div>
+          </motion.div>
           
           {error && (
-            <div className="p-4 bg-red-50 text-red-700 rounded-lg text-sm">
+            <motion.div 
+              className="p-4 bg-red-50 text-red-700 rounded-lg text-sm"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
               {error}
-            </div>
+            </motion.div>
           )}
 
-          <button
+          <motion.button
             type="submit"
             disabled={isSubmitting}
             className={`px-6 py-3 text-base font-medium text-white bg-blue-600 rounded-lg transition-all duration-200 cursor-pointer
               ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:bg-blue-700 hover:shadow-lg'}`}
+            variants={scaleIn}
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 10px 25px rgba(0,0,0,0.2)"
+            }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ delay: 0.3 }}
           >
             {isSubmitting ? 'Signing in...' : 'Sign In'}
-          </button>
-        </form>
+          </motion.button>
+        </motion.form>
 
-        <p className="mt-8 text-gray-600 text-sm">
+        <motion.p 
+          className="mt-8 text-gray-600 text-sm"
+          variants={fadeInUp}
+          transition={{ delay: 0.4 }}
+        >
           Don't have an account?{' '}
           <Link href="/signup" className="text-blue-600 hover:text-blue-500 font-medium">
             Sign up
           </Link>
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
     </section>
   );
 }

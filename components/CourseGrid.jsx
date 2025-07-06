@@ -1,5 +1,7 @@
 import React from "react";
+import { motion } from "framer-motion";
 import CourseCard from "./CourseCard";
+import { fadeInUp, staggerCards, staggerCard } from "../animations";
 
 function CourseGrid() {
   const courses = [
@@ -43,20 +45,34 @@ function CourseGrid() {
 
   return (
     <section className="px-0 py-16 w-full max-w-screen-xl">
-      <h2 className="mb-10 text-4xl font-bold text-center text-black">
+      <motion.h2 
+        className="mb-10 text-4xl font-bold text-center text-black"
+        variants={fadeInUp}
+        initial="hidden"
+        animate="visible"
+      >
         Available Courses
-      </h2>
-      <div className="flex flex-wrap gap-8 justify-center max-md:gap-6 max-sm:flex-col max-sm:items-center">
+      </motion.h2>
+      <motion.div 
+        className="flex flex-wrap gap-8 justify-center max-md:gap-6 max-sm:flex-col max-sm:items-center"
+        variants={staggerCards}
+        initial="hidden"
+        animate="visible"
+      >
         {courses.map((course) => (
-          <CourseCard
+          <motion.div
             key={course.id}
-            id={course.id}
-            title={course.title}
-            description={course.description}
-            imageUrl={course.imageUrl}
-          />
+            variants={staggerCard}
+          >
+            <CourseCard
+              id={course.id}
+              title={course.title}
+              description={course.description}
+              imageUrl={course.imageUrl}
+            />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }

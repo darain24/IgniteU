@@ -2,7 +2,9 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
+import { fadeInUp, scaleIn } from "../animations";
 
 function SignupForm() {
   const [formData, setFormData] = useState({
@@ -60,40 +62,85 @@ function SignupForm() {
   if (success) {
     return (
       <section className="px-4 py-16 text-center max-w-md mx-auto">
-        <div className="bg-white p-8 rounded-xl shadow-sm">
-          <div className="mb-6">
+        <motion.div 
+          className="bg-white p-8 rounded-xl shadow-sm"
+          variants={fadeInUp}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.div 
+            className="mb-6"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+          >
             <svg className="w-16 h-16 text-green-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
             </svg>
-          </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Sign Up Successful!</h2>
-          <p className="text-gray-600 mb-8">
-            Your account has been created successfully. Please login to continue.
-          </p>
-          <Link
-            href="/login"
-            className="inline-block px-6 py-3 text-base font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-all duration-200 cursor-pointer"
+          </motion.div>
+          <motion.h2 
+            className="text-2xl font-bold text-gray-900 mb-4"
+            variants={fadeInUp}
           >
-            Go to Login
-          </Link>
-        </div>
+            Sign Up Successful!
+          </motion.h2>
+          <motion.p 
+            className="text-gray-600 mb-8"
+            variants={fadeInUp}
+            transition={{ delay: 0.1 }}
+          >
+            Your account has been created successfully. Please login to continue.
+          </motion.p>
+          <motion.div
+            variants={fadeInUp}
+            transition={{ delay: 0.2 }}
+          >
+            <Link
+              href="/login"
+              className="inline-block px-6 py-3 text-base font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-all duration-200 cursor-pointer"
+            >
+              Go to Login
+            </Link>
+          </motion.div>
+        </motion.div>
       </section>
     );
   }
 
   return (
     <section className="px-4 py-16 text-center max-w-md mx-auto">
-      <div className="bg-white p-8 rounded-xl shadow-sm">
-        <h2 className="text-3xl font-bold text-black mb-6">Create Account</h2>
-        <p className="text-gray-600 mb-8">
+      <motion.div 
+        className="bg-white p-8 rounded-xl shadow-sm"
+        variants={fadeInUp}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.h2 
+          className="text-3xl font-bold text-black mb-6"
+          variants={fadeInUp}
+        >
+          Create Account
+        </motion.h2>
+        <motion.p 
+          className="text-gray-600 mb-8"
+          variants={fadeInUp}
+          transition={{ delay: 0.1 }}
+        >
           Join our community and start your journey
-        </p>
+        </motion.p>
         
-        <form
+        <motion.form
           className="flex flex-col gap-6"
           onSubmit={handleSubmit}
+          variants={fadeInUp}
+          transition={{ delay: 0.2 }}
         >
-          <div className="text-left">
+          <motion.div 
+            className="text-left"
+            variants={fadeInUp}
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.2 }}
+          >
             <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
               Full Name
             </label>
@@ -107,9 +154,14 @@ function SignupForm() {
               className="p-3 w-full text-base rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 text-black placeholder-gray-400"
               required
             />
-          </div>
+          </motion.div>
 
-          <div className="text-left">
+          <motion.div 
+            className="text-left"
+            variants={fadeInUp}
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.2 }}
+          >
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
               Email Address
             </label>
@@ -123,9 +175,14 @@ function SignupForm() {
               className="p-3 w-full text-base rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 text-black placeholder-gray-400"
               required
             />
-          </div>
+          </motion.div>
 
-          <div className="text-left">
+          <motion.div 
+            className="text-left"
+            variants={fadeInUp}
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.2 }}
+          >
             <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
               Password
             </label>
@@ -139,9 +196,14 @@ function SignupForm() {
               className="p-3 w-full text-base rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 text-black placeholder-gray-400"
               required
             />
-          </div>
+          </motion.div>
 
-          <div className="text-left">
+          <motion.div 
+            className="text-left"
+            variants={fadeInUp}
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.2 }}
+          >
             <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
               Confirm Password
             </label>
@@ -155,31 +217,47 @@ function SignupForm() {
               className="p-3 w-full text-base rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 text-black placeholder-gray-400"
               required
             />
-          </div>
+          </motion.div>
           
           {error && (
-            <div className="p-4 bg-red-50 text-red-700 rounded-lg text-sm">
+            <motion.div 
+              className="p-4 bg-red-50 text-red-700 rounded-lg text-sm"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
               {error}
-            </div>
+            </motion.div>
           )}
 
-          <button
+          <motion.button
             type="submit"
             disabled={isSubmitting}
             className={`px-6 py-3 text-base font-medium text-white bg-blue-600 rounded-lg transition-all duration-200 cursor-pointer
               ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:bg-blue-700 hover:shadow-lg'}`}
+            variants={scaleIn}
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 10px 25px rgba(0,0,0,0.2)"
+            }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ delay: 0.3 }}
           >
             {isSubmitting ? 'Creating Account...' : 'Sign Up'}
-          </button>
-        </form>
+          </motion.button>
+        </motion.form>
 
-        <p className="mt-8 text-gray-600 text-sm">
+        <motion.p 
+          className="mt-8 text-gray-600 text-sm"
+          variants={fadeInUp}
+          transition={{ delay: 0.4 }}
+        >
           Already have an account?{' '}
           <Link href="/login" className="text-blue-600 hover:text-blue-500 font-medium">
             Sign in
           </Link>
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
     </section>
   );
 }

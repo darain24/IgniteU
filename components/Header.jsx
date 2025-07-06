@@ -1,7 +1,9 @@
 "use client";
 import React from "react";
+import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
 import { useRouter } from "next/navigation";
+import { fadeInDown, staggerContainer, staggerChildren } from "../animations";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -15,14 +17,33 @@ function Header() {
     }
   };
 
+  const navItems = [
+    { href: "/", label: "Home" },
+    { href: "/courses", label: "Courses" },
+    { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" }
+  ];
+
   return (
-    <header className="flex justify-between items-center p-4 w-full bg-blue-600 shadow-md max-sm:flex-col max-sm:gap-2.5 shadow-md bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-6">
-      <a href="/">
+    <motion.header 
+      className="flex justify-between items-center p-4 w-full bg-blue-600 shadow-md max-sm:flex-col max-sm:gap-2.5 shadow-md bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-6"
+      variants={fadeInDown}
+      initial="hidden"
+      animate="visible"
+    >
+      <motion.a 
+        href="/"
+        whileHover={{ scale: 1.05 }}
+        transition={{ duration: 0.2 }}
+      >
         <h1 className="text-3xl font-bold text-white">IgniteU</h1>
-      </a>
-      <button
+      </motion.a>
+      
+      <motion.button
         className="md:hidden text-white focus:outline-none"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
       >
         <svg
           className="w-6 h-6"
@@ -47,50 +68,63 @@ function Header() {
             />
           )}
         </svg>
-      </button>
-      <nav
+      </motion.button>
+      
+      <motion.nav
         className={`${
           isMenuOpen ? "flex" : "hidden"
         } flex-col gap-5 md:flex md:flex-row md:gap-5`}
+        variants={staggerContainer}
+        initial="hidden"
+        animate="visible"
       >
-        <a href="/" className="hover:underline text-base leading-6 text-white">
-          Home
-        </a>
-        <a
-          href="/courses"
-          className="hover:underline text-base leading-6 text-white"
-        >
-          Courses
-        </a>
-        <a
-          href="/about"
-          className="hover:underline text-base leading-6 text-white"
-        >
-          About
-        </a>
-        <a
-          href="/contact"
-          className="hover:underline text-base leading-6 text-white"
-        >
-          Contact
-        </a>
+        {navItems.map((item, index) => (
+          <motion.a
+            key={item.href}
+            href={item.href}
+            className="hover:underline text-base leading-6 text-white"
+            variants={staggerChildren}
+            whileHover={{ 
+              scale: 1.05,
+              textDecoration: "underline"
+            }}
+            transition={{ duration: 0.2 }}
+          >
+            {item.label}
+          </motion.a>
+        ))}
+        
         {user ? (
-          <button
+          <motion.button
             onClick={handleLogout}
             className="px-4 py-1.5 text-base text-blue-600 bg-yellow-300 rounded bg-yellow-400 hover:bg-yellow-300 text-black hover:cursor-pointer"
+            variants={staggerChildren}
+            whileHover={{ 
+              scale: 1.05,
+              backgroundColor: "#fbbf24"
+            }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.2 }}
           >
             Logout
-          </button>
+          </motion.button>
         ) : (
-          <button
+          <motion.button
             onClick={() => (window.location.href = "/login")}
             className="px-4 py-1.5 text-base text-blue-600 bg-yellow-300 rounded bg-yellow-400 hover:bg-yellow-300 text-black hover:cursor-pointer"
+            variants={staggerChildren}
+            whileHover={{ 
+              scale: 1.05,
+              backgroundColor: "#fbbf24"
+            }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.2 }}
           >
             Login
-          </button>
+          </motion.button>
         )}
-      </nav>
-    </header>
+      </motion.nav>
+    </motion.header>
   );
 }
 

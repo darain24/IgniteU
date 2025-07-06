@@ -1,5 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { fadeInUp, scaleIn } from "../animations";
+import emailjs from '@emailjs/browser';
 
 function ContactForm() {
   const [formData, setFormData] = useState({
@@ -9,6 +12,13 @@ function ContactForm() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [emailjsInitialized, setEmailjsInitialized] = useState(false);
+
+  useEffect(() => {
+    // Initialize EmailJS
+    emailjs.init("I2u1jR4kTEswKzuSL"); // You'll need to replace this with your actual public key
+    setEmailjsInitialized(true);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,6 +26,7 @@ function ContactForm() {
       ...prev,
       [name]: value
     }));
+    setSubmitStatus(null);
   };
 
   const handleSubmit = async (e) => {
@@ -24,11 +35,27 @@ function ContactForm() {
     setSubmitStatus(null);
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', message: '' });
+      // Send email using EmailJS
+      const result = await emailjs.send(
+        'service_imm4398', // Replace with your EmailJS service ID
+        'template_t4kymhu', // Replace with your EmailJS template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_name: 'Syed Darain Qamar', // This will be your name
+        },
+        'I2u1jR4kTEswKzuSL' // Replace with your EmailJS public key
+      );
+
+      if (result.status === 200) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
     } catch (error) {
+      console.error('Email send error:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -37,16 +64,38 @@ function ContactForm() {
 
   return (
     <section className="px-4 py-16 text-center max-w-4xl mx-auto">
-      <h2 className="text-4xl font-bold text-black mb-4">Contact Us</h2>
-      <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+      <motion.h2 
+        className="text-4xl font-bold text-black mb-4"
+        variants={fadeInUp}
+        initial="hidden"
+        animate="visible"
+      >
+        Contact Us
+      </motion.h2>
+      <motion.p 
+        className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto"
+        variants={fadeInUp}
+        initial="hidden"
+        animate="visible"
+        transition={{ delay: 0.2 }}
+      >
         Have questions or need assistance? We're here to help! Fill out the form below and we'll get back to you as soon as possible.
-      </p>
+      </motion.p>
       
-      <form
+      <motion.form
         className="flex flex-col gap-6 items-center max-w-xl mx-auto"
         onSubmit={handleSubmit}
+        variants={fadeInUp}
+        initial="hidden"
+        animate="visible"
+        transition={{ delay: 0.4 }}
       >
-        <div className="w-full">
+        <motion.div 
+          className="w-full"
+          variants={fadeInUp}
+          whileHover={{ scale: 1.02 }}
+          transition={{ duration: 0.2 }}
+        >
           <input
             type="text"
             name="name"
@@ -56,8 +105,13 @@ function ContactForm() {
             className="p-4 w-full text-base rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 text-black placeholder-gray-400"
             required
           />
-        </div>
-        <div className="w-full">
+        </motion.div>
+        <motion.div 
+          className="w-full"
+          variants={fadeInUp}
+          whileHover={{ scale: 1.02 }}
+          transition={{ duration: 0.2 }}
+        >
           <input
             type="email"
             name="email"
@@ -67,8 +121,13 @@ function ContactForm() {
             className="p-4 w-full text-base rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 text-black placeholder-gray-400"
             required
           />
-        </div>
-        <div className="w-full">
+        </motion.div>
+        <motion.div 
+          className="w-full"
+          variants={fadeInUp}
+          whileHover={{ scale: 1.02 }}
+          transition={{ duration: 0.2 }}
+        >
           <textarea
             name="message"
             value={formData.message}
@@ -77,29 +136,46 @@ function ContactForm() {
             className="p-4 w-full text-base rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 text-black placeholder-gray-400 resize-none h-40"
             required
           />
-        </div>
+        </motion.div>
         
         {submitStatus === 'success' && (
-          <div className="w-full p-4 bg-green-50 text-green-700 rounded-lg">
+          <motion.div 
+            className="w-full p-4 bg-green-50 text-green-700 rounded-lg"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             Thank you for your message! We'll get back to you soon.
-          </div>
+          </motion.div>
         )}
         
         {submitStatus === 'error' && (
-          <div className="w-full p-4 bg-red-50 text-red-700 rounded-lg">
-            Oops! Something went wrong. Please try again.
-          </div>
+          <motion.div 
+            className="w-full p-4 bg-red-50 text-red-700 rounded-lg"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            Oops! Something went wrong. Please try again or contact us directly.
+          </motion.div>
         )}
 
-        <button
+        <motion.button
           type="submit"
-          disabled={isSubmitting}
-          className={`px-8 py-4 text-base font-medium text-white bg-blue-600 rounded-lg cursor-pointer transition-all duration-200 w-full max-w-xs
-            ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:bg-blue-700 hover:shadow-lg'}`}
+          disabled={isSubmitting || !emailjsInitialized}
+          className={`px-8 py-4 text-base font-medium text-white bg-blue-600 rounded-lg transition-all duration-200 w-full max-w-xs
+            ${isSubmitting || !emailjsInitialized ? 'opacity-70 cursor-not-allowed' : 'hover:bg-blue-700 hover:shadow-lg'}`}
+          variants={scaleIn}
+          whileHover={{ 
+            scale: 1.05,
+            boxShadow: "0 10px 25px rgba(0,0,0,0.2)"
+          }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ delay: 0.6 }}
         >
           {isSubmitting ? 'Sending...' : 'Send Message'}
-        </button>
-      </form>
+        </motion.button>
+      </motion.form>
     </section>
   );
 }

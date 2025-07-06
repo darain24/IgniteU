@@ -1,5 +1,7 @@
 import React from "react";
+import { motion } from "framer-motion";
 import FAQItem from "./FAQItem";
+import { fadeInUp, staggerContainer, staggerChildren } from "../animations";
 
 function FAQSection() {
   const faqItems = [
@@ -25,12 +27,28 @@ function FAQSection() {
 
   return (
     <section className="px-0 py-16 bg-gradient-to-b from-purple-200 to-blue-200">
-      <h2 className="mb-10 text-4xl font-bold text-center max-sm:text-3xl">
+      <motion.h2 
+        className="mb-10 text-4xl font-bold text-center max-sm:text-3xl"
+        variants={fadeInUp}
+        initial="hidden"
+        animate="visible"
+      >
         Frequently Asked Questions
-      </h2>
-      {faqItems.map((item) => (
-        <FAQItem key={item.id} question={item.question} answer={item.answer} />
-      ))}
+      </motion.h2>
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        animate="visible"
+      >
+        {faqItems.map((item) => (
+          <motion.div
+            key={item.id}
+            variants={staggerChildren}
+          >
+            <FAQItem question={item.question} answer={item.answer} />
+          </motion.div>
+        ))}
+      </motion.div>
     </section>
   );
 }
