@@ -41,7 +41,7 @@ function CheckoutContent() {
 
         <div className="mb-8 p-4 bg-gray-50 rounded-lg">
           <h2 className="text-lg font-semibold mb-2">Order Summary</h2>
-          <p className="text-gray-600">{courseTitle || 'Selected Course'}</p>
+          <p className="text-gray-600">{courseTitle}</p>
           <p className="text-xl font-bold mt-2">${coursePrice}</p>
         </div>
 

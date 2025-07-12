@@ -1,4 +1,3 @@
-// Scale animation variants
 export const scaleIn = {
   hidden: { scale: 0.8, opacity: 0 },
   visible: { 

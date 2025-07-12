@@ -33,14 +33,14 @@ function SignupForm() {
     setIsSubmitting(true);
     setError(null);
 
-    // Validate password match
+
     if (formData.password !== formData.confirmPassword) {
       setError('Passwords do not match');
       setIsSubmitting(false);
       return;
     }
 
-    // Validate password length
+
     if (formData.password.length < 6) {
       setError('Password must be at least 6 characters long');
       setIsSubmitting(false);
@@ -51,7 +51,7 @@ function SignupForm() {
     
     if (result.success) {
       setSuccess(true);
-      // Don't redirect, show success message instead
+
     } else {
       setError(result.error);
     }

@@ -1,4 +1,3 @@
-// Fade animation variants
 export const fadeIn = {
   hidden: { opacity: 0 },
   visible: { 

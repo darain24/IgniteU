@@ -1,4 +1,3 @@
-// Page transition animation variants
 export const pageTransition = {
   initial: { opacity: 0, y: 20 },
   animate: { 

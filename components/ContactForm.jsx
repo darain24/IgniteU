@@ -15,8 +15,7 @@ function ContactForm() {
   const [emailjsInitialized, setEmailjsInitialized] = useState(false);
 
   useEffect(() => {
-    // Initialize EmailJS
-    emailjs.init("I2u1jR4kTEswKzuSL"); // You'll need to replace this with your actual public key
+    emailjs.init("I2u1jR4kTEswKzuSL");
     setEmailjsInitialized(true);
   }, []);
 
@@ -35,17 +34,16 @@ function ContactForm() {
     setSubmitStatus(null);
 
     try {
-      // Send email using EmailJS
       const result = await emailjs.send(
-        'service_imm4398', // Replace with your EmailJS service ID
-        'template_t4kymhu', // Replace with your EmailJS template ID
+        'service_imm4398',
+        'template_t4kymhu', 
         {
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
-          to_name: 'Syed Darain Qamar', // This will be your name
+          to_name: 'Syed Darain Qamar',
         },
-        'I2u1jR4kTEswKzuSL' // Replace with your EmailJS public key
+        'I2u1jR4kTEswKzuSL'
       );
 
       if (result.status === 200) {
@@ -156,7 +154,7 @@ function ContactForm() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            Oops! Something went wrong. Please try again or contact us directly.
+            Oops! Something went wrong.
           </motion.div>
         )}
 
@@ -171,7 +169,7 @@ function ContactForm() {
             boxShadow: "0 10px 25px rgba(0,0,0,0.2)"
           }}
           whileTap={{ scale: 0.95 }}
-          transition={{ delay: 0.6 }}
+          transition={{ delay: 0.2 }}
         >
           {isSubmitting ? 'Sending...' : 'Send Message'}
         </motion.button>

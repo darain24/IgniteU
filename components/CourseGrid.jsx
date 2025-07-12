@@ -44,7 +44,7 @@ function CourseGrid() {
   ];
 
   return (
-    <section className="px-0 py-16 w-full max-w-screen-xl">
+    <section className="px-4 py-16 w-full max-w-screen-xl max-md:px-6 max-sm:px-4">
       <motion.h2 
         className="mb-10 text-4xl font-bold text-center text-black"
         variants={fadeInUp}
@@ -54,7 +54,7 @@ function CourseGrid() {
         Available Courses
       </motion.h2>
       <motion.div 
-        className="flex flex-wrap gap-8 justify-center max-md:gap-6 max-sm:flex-col max-sm:items-center"
+        className="grid grid-cols-3 gap-8 justify-items-center max-lg:grid-cols-2 max-md:grid-cols-1 max-md:gap-6 max-md:px-4 max-sm:gap-4 max-sm:px-3"
         variants={staggerCards}
         initial="hidden"
         animate="visible"

@@ -1,10 +1,13 @@
 import React from "react";
+import { useRouter } from 'next/navigation';
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "../animations";
 
 function Hero() {
+  const router = useRouter();
+  
   const handleExploreCourses = () => {
-    window.location.href = "/courses";
+    router.push('/courses');
   };
 
   return (

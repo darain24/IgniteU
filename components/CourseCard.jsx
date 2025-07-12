@@ -7,7 +7,7 @@ function CourseCard({ id, imageUrl, title, description }) {
 
   return (
     <motion.article 
-      className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md w-[405px] max-md:w-full max-md:max-w-[600px] max-sm:w-full max-sm:max-w-[400px]"
+      className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md w-full max-w-sm max-md:w-full max-md:max-w-[600px] max-sm:w-full max-sm:max-w-[400px]"
       variants={scaleIn}
       whileHover={{ 
         y: -10,

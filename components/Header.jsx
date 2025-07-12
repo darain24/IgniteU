@@ -78,11 +78,11 @@ function Header() {
         initial="hidden"
         animate="visible"
       >
-        {navItems.map((item, index) => (
+        {navItems.map((item) => (
           <motion.a
             key={item.href}
             href={item.href}
-            className="hover:underline text-base leading-6 text-white"
+            className="text-base leading-6 text-white"
             variants={staggerChildren}
             whileHover={{ 
               scale: 1.05,
@@ -110,7 +110,7 @@ function Header() {
           </motion.button>
         ) : (
           <motion.button
-            onClick={() => (window.location.href = "/login")}
+            onClick={() => router.push('/login')}
             className="px-4 py-1.5 text-base text-blue-600 bg-yellow-300 rounded bg-yellow-400 hover:bg-yellow-300 text-black hover:cursor-pointer"
             variants={staggerChildren}
             whileHover={{ 
