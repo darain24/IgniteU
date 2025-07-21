@@ -1,12 +1,13 @@
 "use client";
 import React from "react";
+import {useState} from 'react'
 import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
 import { useRouter } from "next/navigation";
 import { fadeInDown, staggerContainer, staggerChildren } from "../animations";
 
 function Header() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, logout } = useAuth();
   const router = useRouter();
 

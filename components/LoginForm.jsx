@@ -33,9 +33,8 @@ function LoginForm() {
     const result = await login(formData.email, formData.password);
     
     if (result.success) {
-      router.push('/'); // Redirect to home page after successful login
+      router.push('/'); 
     } else {
-      // Handle specific Firebase error messages
       if (result.error.includes('user-not-found') || result.error.includes('wrong-password')) {
         setError(
           <div className="space-y-2">

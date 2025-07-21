@@ -1,4 +1,3 @@
-// Main animations index file
 export { fadeIn, fadeInUp, fadeInDown, fadeInLeft, fadeInRight } from './variants/fade.js';
 export { slideIn, slideInUp, slideInDown, slideInLeft, slideInRight } from './variants/slide.js';
 export { scaleIn, scaleOut, bounceIn, pulse } from './variants/scale.js';
