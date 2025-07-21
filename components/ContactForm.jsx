@@ -15,7 +15,7 @@ function ContactForm() {
   const [emailjsInitialized, setEmailjsInitialized] = useState(false);
 
   useEffect(() => {
-    emailjs.init("I2u1jR4kTEswKzuSL");
+    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
     setEmailjsInitialized(true);
   }, []);
 
@@ -43,7 +43,7 @@ function ContactForm() {
           message: formData.message,
           to_name: 'Syed Darain Qamar',
         },
-        'I2u1jR4kTEswKzuSL'
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
       );
 
       if (result.status === 200) {
